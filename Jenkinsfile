@@ -1,3 +1,4 @@
+// Oleg Milyukov
 // Go-Docker-EC2
 // Write a Jenkinsfile that performs the following actions:
 // 1. 'build base image: This stage builds a base Docker image that the application will be built upon.
@@ -20,11 +21,15 @@
 // HINT: In the 'Rolling Update' stage, we use the docker pull command to update the local copy of the Docker image on the EC2 instance, and then use the docker service update command to perform a rolling update.         --update-parallelism 1 option ensures that only one instance of the application is updated at a time, and the     --update-delay 10s option specifies a delay of 10 seconds between updates. 
 
 pipeline {
+    agent any
+    
     stages {
+
         stage("Build base image") {
             steps {
                 sh "make build-base"
             }
         }
+
     }
 }
